@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 from typing import List, Tuple
 
 # Import the search classes (assuming they're in a file named vector_search_classes.py)
-from naive_search import BruteForceSearch, SimpleFAISS, KNNSearch, KMeansSearch
+from search.naive_search import BruteForceSearch, SimpleFAISS, KNNSearch, KMeansSearch
 
 def run_search(searcher, data: np.ndarray, query: np.ndarray, k: int = 1) -> Tuple[List[Tuple[float, np.ndarray]], float, float]:
     start_train = time.time()

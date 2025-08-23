@@ -104,3 +104,36 @@ class KMeansSearch:
         sorted_indices = np.argsort(distances)[:k]
 
         return [(distances[i], cluster_points[i]) for i in sorted_indices]
+
+def test_algorithms():
+    # Generate sample data
+    np.random.seed(42)
+    dataset = np.random.rand(1000, 128)
+    query = np.random.rand(128)
+
+    print("Testing Brute-Force Vector Search:")
+    brute_force = BruteForceSearch()
+    brute_force.train(dataset)
+    results = brute_force.search(query, k=5)
+    print("Top 5 results (distance, vector):")
+    for distance, vector in results:
+        print(f"Distance: {distance:.4f}, Vector: {vector[:5]}...")
+
+    print("\nTesting KNN Search:")
+    knn = KNNSearch()
+    knn.train(dataset.tolist())
+    results = knn.search(query, k=5)
+    print("Top 5 results (distance, vector):")
+    for distance, vector in results:
+        print(f"Distance: {distance:.4f}, Vector: {vector[:5]}...")
+
+    print("\nTesting KMeans Search:")
+    kmeans = KMeansSearch(k_clusters=10)
+    kmeans.train(dataset)
+    results = kmeans.search(query, k=5)
+    print("Top 5 results (distance, vector):")
+    for distance, vector in results:
+        print(f"Distance: {distance:.4f}, Vector: {vector[:5]}...")
+
+if __name__ == "__main__":
+    test_algorithms()
