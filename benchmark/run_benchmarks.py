@@ -1,7 +1,6 @@
 import numpy as np
-from typing import List
+from typing import List, Tuple
 from benchmark.base import BenchmarkBase
-from benchmark.search_algorithms import NaiveFAISS, OptimizedFAISS, NaiveHNSW, OptimizedHNSW
 
 def generate_dataset(num_vectors: int, vector_dim: int) -> np.ndarray:
     return np.random.rand(num_vectors, vector_dim)
@@ -39,24 +38,24 @@ def main():
     ground_truth = compute_ground_truth(dataset, queries, k)
 
     # Initialize algorithms
-    naive_faiss = NaiveFAISS(n_subvectors=8, n_clusters=256)
-    optimized_faiss = OptimizedFAISS(n_subvectors=8, n_clusters=256)
-    naive_hnsw = NaiveHNSW(num_neighbors=10)
-    optimized_hnsw = OptimizedHNSW(num_layers=4, num_neighbors=10)
+    # naive_faiss = NaiveFAISS(n_subvectors=8, n_clusters=256)
+    # optimized_faiss = OptimizedFAISS(n_subvectors=8, n_clusters=256)
+    # naive_hnsw = NaiveHNSW(num_neighbors=10)
+    # optimized_hnsw = OptimizedHNSW(num_layers=4, num_neighbors=10)
 
     # Create benchmarks
-    benchmarks = [
-        SearchBenchmark("Naive FAISS", naive_faiss),
-        SearchBenchmark("Optimized FAISS", optimized_faiss),
-        SearchBenchmark("Naive HNSW", naive_hnsw),
-        SearchBenchmark("Optimized HNSW", optimized_hnsw),
-    ]
+    # benchmarks = [
+    #     SearchBenchmark("Naive FAISS", naive_faiss),
+    #     SearchBenchmark("Optimized FAISS", optimized_faiss),
+    #     SearchBenchmark("Naive HNSW", naive_hnsw),
+    #     SearchBenchmark("Optimized HNSW", optimized_hnsw),
+    # ]
 
-    # Run benchmarks
-    for benchmark in benchmarks:
-        benchmark.run_benchmark(dataset, queries, k, ground_truth)
-        benchmark.print_results()
-        benchmark.plot_results()
+    # # Run benchmarks
+    # for benchmark in benchmarks:
+    #     benchmark.run_benchmark(dataset, queries, k, ground_truth)
+    #     benchmark.print_results()
+    #     benchmark.plot_results()
 
 if __name__ == "__main__":
     main()

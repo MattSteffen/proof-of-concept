@@ -1,0 +1,28 @@
+[project]
+name = "perspective-search"
+version = "0.1.0"
+description = "Perspective-aware semantic search."
+readme = "README.md"
+authors = [
+    { name = "Matt", email = "steffen.matthewj@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "networkx>=3.5",
+    "numpy>=2.3.1",
+    "pandas>=2.3.1",
+    "sec-edgar-downloader>=5.0.3",
+    "sentence-transformers>=5.0.0",
+    "tqdm>=4.67.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.isort]
+profile = "black"
