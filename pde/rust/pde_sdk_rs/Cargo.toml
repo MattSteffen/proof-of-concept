@@ -1,0 +1,48 @@
+[package]
+name = "pde-sdk"
+version = "0.1.0"
+edition = "2021"
+description = "High-performance Rust backend for PDE SDK"
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/your-repo/pde-sdk"
+repository = "https://github.com/your-repo/pde-sdk"
+keywords = ["pde", "numerical", "finite-difference", "simulation"]
+categories = ["science", "mathematics"]
+
+[lib]
+name = "pde_sdk"
+crate-type = ["cdylib"]  # Required for PyO3
+
+[dependencies]
+pyo3 = { version = "0.21", features = ["extension-module"] }
+numpy = "0.21"
+rayon = { version = "1.7", optional = true }
+
+[dependencies.ndarray]
+version = "0.15"
+features = ["rayon"]
+
+[features]
+default = []
+parallel = ["rayon", "ndarray/rayon"]
+
+[dev-dependencies]
+criterion = "0.5"
+
+
+
+[package.metadata.maturin]
+name = "pde_sdk_rust"
+
+[profile.release]
+opt-level = 3
+debug = false
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.dev]
+opt-level = 0
+debug = true
+overflow-checks = true

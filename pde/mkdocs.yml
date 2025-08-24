@@ -1,0 +1,115 @@
+site_name: PDE SDK Documentation
+site_description: Finite-difference SDK for solving common PDEs on uniform 1D/2D grids
+site_author: PDE SDK Team
+site_url: https://pde-sdk.readthedocs.io/
+
+# Repository
+repo_name: pde-sdk
+repo_url: https://github.com/your-org/pde-sdk
+edit_uri: edit/main/docs/
+
+# Theme
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - content.code.select
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+
+# Extensions
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.caret
+  - pymdownx.betterem
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|^|$'
+
+# Navigation
+nav:
+  - Home: index.md
+  - Overview: overview.md
+  - User Guide:
+      - Equations & Boundary Conditions: equations-setup.md
+      - Domains & Grids: domains-grids.md
+      - Solvers:
+          - Time-Stepping Solvers: solvers-timestepping.md
+          - Iterative Solvers: solvers-iterative.md
+      - Visualization: visualization.md
+      - Best Practices: best-practices.md
+  - Roadmap: Roadmap.md
+
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/your-org/pde-sdk
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/pde-sdk/
+
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+
+# Copyright
+copyright: Copyright &copy; 2024 PDE SDK Team
