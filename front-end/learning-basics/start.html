@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Start</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            grid-template-columns: 200px 1fr;
+            height: 100vh;
+        }
+
+        .header {
+            grid-column: 1 / -1;
+            background-color: #4a90e2;
+            padding: 1rem;
+            color: white;
+        }
+
+        .sidebar {
+            background-color: #2c3e50;
+            padding: 1rem;
+            color: white;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sidebar button {
+            padding: 0.75rem;
+            background-color: #34495e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .sidebar button:hover {
+            background-color: #4a5f7a;
+        }
+
+        .search-section {
+            margin-top: 1rem;
+        }
+
+        .search-section input {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #34495e;
+            color: white;
+            border: 1px solid #4a5f7a;
+            border-radius: 4px;
+        }
+
+        .search-section input::placeholder {
+            color: #95a5a6;
+        }
+
+        .search-section p {
+            margin-top: 0.5rem;
+            padding: 0.25rem 0;
+            cursor: pointer;
+        }
+
+        .search-section p:hover {
+            color: #ecf0f1;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .content {
+            padding: 1rem;
+        }
+
+        .footer {
+            grid-column: 1 / -1;
+            background-color: #34495e;
+            padding: 1rem;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Start</h1>
+    </div>
+    <div class="sidebar">
+        <p>Sidebar</p>
+        <div class="search-section">
+            <p>options 1</p>
+            <p>options 2</p>
+            <p>options 3</p>
+            <p>options 4</p>
+        </div>
+        <div class="button-grid">
+            <button>chat</button>
+            <button>files</button>
+            <button>learn</button>
+            <button>others</button>
+        </div>
+        <input class="search-input" type="text" placeholder="Search...">
+    </div>
+    <div class="content">
+        <p>This is a starting pge for the learning basics section.</p>
+    </div>
+    <div class="footer">
+        <p>Footer</p>
+    </div>
+</body>
+
+</html>

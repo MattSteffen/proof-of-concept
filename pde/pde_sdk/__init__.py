@@ -7,7 +7,16 @@ Prototype fast in Python, then switch on a high-performance Rust backend.
 
 __version__ = "0.1.0"
 
-from . import boundaries, domains, equations, rust_backend, solvers, visualization
+from . import (
+    boundaries,
+    config,
+    domains,
+    equations,
+    rust_backend,
+    solvers,
+    utils,
+    visualization,
+)
 
 __all__ = [
     "equations",
@@ -15,5 +24,7 @@ __all__ = [
     "boundaries",
     "solvers",
     "visualization",
+    "config",
+    "utils",
     "rust_backend",
 ]

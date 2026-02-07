@@ -113,8 +113,30 @@ grid = UniformGrid2D(nx=nx, ny=ny, length_x=1.0, length_y=1.0)
 def source_term(x, y):
     return -2 * np.pi**2 * np.sin(np.pi * x) * np.sin(np.pi * y)
 
-# 3. Create equation
+# 3. Create equation (defaults to Dirichlet BCs with value 0.0)
 equation = Poisson2D(grid, source_term)
+
+# Or specify boundary conditions explicitly
+from pde_sdk.boundaries import DirichletBC, NeumannBC
+
+equation = Poisson2D(
+    grid=grid,
+    f=source_term,
+    left_bc=DirichletBC(0.0),
+    right_bc=DirichletBC(0.0),
+    bottom_bc=DirichletBC(0.0),
+    top_bc=DirichletBC(0.0)
+)
+
+# Example with Neumann BCs (insulated boundaries)
+equation_neumann = Poisson2D(
+    grid=grid,
+    f=source_term,
+    left_bc=NeumannBC(0.0),   # Zero gradient
+    right_bc=NeumannBC(0.0),
+    bottom_bc=NeumannBC(0.0),
+    top_bc=NeumannBC(0.0)
+)
 ```
 
 ## Boundary Conditions
@@ -136,6 +158,46 @@ bc = DirichletBC(0.0)
 
 # The value can be any float
 bc = DirichletBC(1.5)
+```
+
+#### Neumann Boundary Conditions
+Fixed normal derivative (gradient) at boundaries:
+```
+∂u/∂n = g    on boundary
+```
+
+For 1D: `∂u/∂x = g`  
+For 2D: `∂u/∂n = g` (normal derivative)
+
+**Usage:**
+```python
+from pde_sdk.boundaries import NeumannBC
+
+# Zero gradient (insulated boundary)
+bc = NeumannBC(0.0)
+
+# Non-zero gradient
+bc = NeumannBC(1.5)  # ∂u/∂n = 1.5
+```
+
+**Example with Neumann BCs:**
+```python
+from pde_sdk.boundaries import DirichletBC, NeumannBC
+from pde_sdk.equations.heat import HeatEquation1D
+
+grid = UniformGrid1D(nx=101, length=1.0)
+
+# Zero gradient on left, fixed value on right
+left_bc = NeumannBC(0.0)   # Insulated
+right_bc = DirichletBC(0.0)  # Fixed temperature
+
+eq = HeatEquation1D(
+    alpha=0.01,
+    grid=grid,
+    left_bc=left_bc,
+    right_bc=right_bc,
+    initial_condition=lambda x: np.sin(np.pi * x)
+)
 ```
 
 ### Boundary Condition Application
@@ -349,7 +411,6 @@ for n in n_values:
 The equation system is designed to be extensible:
 
 ### Planned Features
-- **Neumann boundary conditions**: ∂u/∂n = g
 - **Robin boundary conditions**: ∂u/∂n + κu = g
 - **Time-dependent boundary conditions**: u = g(t)
 - **Variable coefficients**: α(x,y) instead of constant

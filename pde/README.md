@@ -187,11 +187,25 @@ Design principles
 Roadmap
 See ROADMAP.md
 
-Desired Features
-- Perfect instructions for LLM how to solve any given pde (that can be solved with the latest versions)
-- Configuration calculation
-    - If you want accuracy < .001, then you need time step at dt=.0005 
-    - Provide a sliding scale for what acuracy you want, what speed you want etc. Then the rest of the design decisions for the solution will be fixed from that.
-    - You can manipulate variables, and the ones that have to be set to achieve your desired state are set for you.
-- Progress bar for solutions
-    - Dynamically show individual steps or whole solution based on log level or some equivalent
+Features
+
+**Configuration System** ✅
+- Automatic parameter calculation based on accuracy/speed preferences
+- Sliding scale interface: specify accuracy or speed preference, get optimal `nx`, `dt`, and solver type
+- See `docs/config.md` for details
+
+**Progress Tracking** ✅
+- Progress bars for all solvers with configurable verbosity levels
+- Options: 'none', 'summary', 'steps'
+- Uses tqdm for visual progress bars (optional dependency)
+
+**Visualization** ✅
+- Built-in plotting utilities for 1D and 2D solutions
+- Convenience `plot()` methods on grid objects
+- Error analysis and comparison plots
+- Time evolution animations
+
+**LLM Instructions** ✅
+- Comprehensive guide for AI assistants: `docs/llm-guide.md`
+- Step-by-step patterns for solving common PDEs
+- Troubleshooting guide and best practices

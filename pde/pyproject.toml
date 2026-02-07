@@ -42,6 +42,11 @@ dependencies = [
     "scipy>=1.9.0",
 ]
 
+[project.optional-dependencies]
+progress = [
+    "tqdm>=4.65.0",
+]
+
 [tool.setuptools.packages.find]
 include = ["pde_sdk"]
 exclude = ["rust"]

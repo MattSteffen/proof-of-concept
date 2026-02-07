@@ -2,6 +2,43 @@
 
 This guide provides best practices, configuration recommendations, and troubleshooting tips for using the PDE SDK effectively.
 
+## Using the Configuration System
+
+The SDK provides an automatic configuration system that calculates optimal parameters based on your accuracy or speed preferences. See `docs/config.md` for comprehensive documentation.
+
+### Quick Example
+
+```python
+from pde_sdk.config import SolverConfig
+
+# Specify target accuracy
+config = SolverConfig(
+    target_accuracy=0.001,  # 0.1% accuracy
+    problem_type='heat_1d',
+    alpha=0.01,
+    domain_length=1.0
+)
+
+# Use recommended parameters
+grid = UniformGrid1D(**config.get_grid_params())
+solver = ExplicitEuler1D(**config.get_solver_params())
+```
+
+### Progress Tracking
+
+All solvers support progress tracking with different verbosity levels:
+
+```python
+# Show progress bar
+solution = solver.solve(equation, t_final=0.1, verbosity='steps')
+
+# Show summary only
+solution = solver.solve(equation, t_final=0.1, verbosity='summary')
+
+# No progress output
+solution = solver.solve(equation, t_final=0.1, verbosity='none')
+```
+
 ## Configuration Guidelines
 
 ### Grid Resolution Selection
