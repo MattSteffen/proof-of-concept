@@ -7,6 +7,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+genai/embedding/fine_tuned_embedding_model
+
 # C extensions
 *.so
 
